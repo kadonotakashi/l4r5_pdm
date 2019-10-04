@@ -168,9 +168,7 @@ void disp_wave(int32_t range){
 
 void disp_spctr(int32_t range){
 
-	int16_t ypoint;
 	int	pwr;
-
 	arm_fill_q15 ( (q15_t)RGB565_BLACK, (q15_t *)pLCDBUF, 200*256);
 
 	for(int freq=0 ;freq<FFT_SIZE/2 ; freq++ ){
@@ -523,7 +521,7 @@ HAL_GPIO_TogglePin(DEBP1_GPIO_Port,DEBP1_Pin);
 
     arm_scale_q31 (pSRC, MicGain, MicGainShiftCH0, (q31_t *)pWORK, (DMA_SAMPLE_CNT/2));
     arm_q31_to_q15((q31_t *)pWORK, (q15_t *)&pW16B0->d16[DMA_SAMPLE_CNT/2],(DMA_SAMPLE_CNT/2));			//to signed 16bit
-    arm_copy_q31(pWORK,(q31_t *)pSUMBUF,DMA_SAMPLE_CNT/2);
+    arm_copy_q31((q31_t *)pWORK,(q31_t *)pSUMBUF,DMA_SAMPLE_CNT/2);
 
     MicGain = MicGainCH1 * 0x1000000;
     pSRC=(int32_t *)(&pDFSDMBUF->d32[1][1]);	//DFSDM buffer ch1
