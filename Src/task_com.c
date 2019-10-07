@@ -215,7 +215,6 @@ void CmndSeq(char recv_char){
 }
 
 
-
 int CommandChk( void)
 {
 #if 1
@@ -226,10 +225,10 @@ int CommandChk( void)
 
 	CmfChkFlag =-1;
 	ParmChkFlag=-2;
+
 	//////////////
 	//command check
 	//////////////
-
 	//STS=0 idle,STS!=0 Busy
 	if (('I'==CmdBuf.command) &&('S'==CmdBuf.sub_command)){				//Initial sensor
 		CmfChkFlag=0;
