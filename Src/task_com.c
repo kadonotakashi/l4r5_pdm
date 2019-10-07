@@ -5,7 +5,6 @@
  *      Author: 13539
  */
 
-
 #include "cmsis_os.h"
 #include "main.h"
 #include "stm32l4xx_hal.h"
@@ -14,35 +13,30 @@
 #include "task_com.h"
 #include "task_sns.h"
 
+#define	HAL_UART	huart1
+
+
 
 void CmndSeq(char recv_char);
 
 extern UART_HandleTypeDef huart1;
-
-#define	HAL_UART	huart1
-
 extern DMA_HandleTypeDef hdma_usart1_tx;
 extern osMessageQId QueSendHandle;
-CmdRespBuf	CmdBuf;
-CmdRespBuf	RspBuf;
-
-RecvBuf rx_buf;
-uint8_t recv_char;
-
 extern DFSDM_BUF *pDFSDMBUF;
 extern W12_BUF	*pDACBUF;
 extern W16_BUF *pW16BSUM;
-
 extern	W16_BUF *pW16B0;
 extern	W16_BUF *pW16B1;
-
 extern int8_t	MicGainCH0,MicGainCH1;
 extern int8_t	MicGainShiftCH0,MicGainShiftCH1;
 
 
+CmdRespBuf	CmdBuf;
+CmdRespBuf	RspBuf;
+RecvBuf rx_buf;
+uint8_t recv_char;
 
 volatile int TxCmpleteFlag=1;
-
 int send_block_max;
 int send_block;
 int DataTxEn;

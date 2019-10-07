@@ -22,7 +22,6 @@ void tk_main(void const * argument)
 {
     osDelay(100);
 
-    //LCD������
     QUE_GLCD_LOCAL.INIT.CMD=GLCDCMD_INIT;
     QUE_GLCD_LOCAL.INIT.COLOR=RGB565_BLUE;
 	xQueueSendToBack(QueGLCDHandle,&QUE_GLCD_LOCAL,10);
